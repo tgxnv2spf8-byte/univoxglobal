@@ -1,0 +1,53 @@
+{
+  "name": "VacationSnap",
+  "type": "object",
+  "properties": {
+    "author_name": {
+      "type": "string"
+    },
+    "author_flag": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "caption": {
+      "type": "string"
+    },
+    "photo_urls": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "location",
+    "photo_urls"
+  ],
+  "rls": {
+    "create": {},
+    "read": {},
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Certificate",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "program_name": {
+      "type": "string"
+    },
+    "date_received": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

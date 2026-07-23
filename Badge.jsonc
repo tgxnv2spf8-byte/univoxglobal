@@ -1,0 +1,21 @@
+{
+  "name": "Badge",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "icon_name": {
+      "type": "string"
+    },
+    "earned_date": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

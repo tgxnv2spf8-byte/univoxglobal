@@ -1,0 +1,22 @@
+{
+  "name": "TimelineEvent",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string"
+    },
+    "event_description": {
+      "type": "string"
+    },
+    "icon_name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "event_description"
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "name": "Announcement",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "short_description": {
+      "type": "string"
+    },
+    "full_description": {
+      "type": "string"
+    },
+    "cover_image_url": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "info",
+        "event",
+        "research",
+        "speaking_club",
+        "new_program",
+        "update"
+      ],
+      "default": "info"
+    },
+    "language": {
+      "type": "string",
+      "default": "en"
+    },
+    "teacher": {
+      "type": "string"
+    },
+    "event_date": {
+      "type": "string"
+    },
+    "location_or_link": {
+      "type": "string"
+    },
+    "join_button_label": {
+      "type": "string",
+      "default": "Join"
+    },
+    "join_target_group_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published",
+        "archived",
+        "scheduled"
+      ],
+      "default": "draft"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "scheduled_for": {
+      "type": "string"
+    },
+    "published_date": {
+      "type": "string"
+    },
+    "views": {
+      "type": "number",
+      "default": 0
+    },
+    "joins": {
+      "type": "number",
+      "default": 0
+    },
+    "active_participants": {
+      "type": "number",
+      "default": 0
+    },
+    "created_by_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "status"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.status": "published"
+        },
+        {
+          "$and": [
+            {
+              "data.status": {
+                "$in": [
+                  "draft",
+                  "archived",
+                  "scheduled"
+                ]
+              }
+            },
+            {
+              "created_by_id": "{{user.id}}"
+            }
+          ]
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

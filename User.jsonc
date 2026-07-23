@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "The role of the user in the app",
+      "enum": [
+        "admin",
+        "user"
+      ]
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Custom app roles: student, teacher, owner",
+      "default": [
+        "student"
+      ]
+    },
+    "teacher_status": {
+      "type": "string",
+      "enum": [
+        "none",
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "none"
+    }
+  },
+  "required": [
+    "role"
+  ],
+  "name": "User",
+  "type": "object"
+}

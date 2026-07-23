@@ -1,0 +1,77 @@
+{
+  "name": "TeacherApplication",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "string"
+    },
+    "proficiency": {
+      "type": "string"
+    },
+    "experience": {
+      "type": "string"
+    },
+    "about": {
+      "type": "string"
+    },
+    "availability": {
+      "type": "string"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending"
+    },
+    "assigned_group_ids": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "languages"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

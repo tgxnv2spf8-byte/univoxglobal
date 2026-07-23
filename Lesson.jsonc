@@ -1,0 +1,49 @@
+{
+  "name": "Lesson",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "teacher": {
+      "type": "string"
+    },
+    "day_of_week": {
+      "type": "string",
+      "enum": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ]
+    },
+    "time": {
+      "type": "string"
+    },
+    "program_name": {
+      "type": "string"
+    },
+    "flag_emoji": {
+      "type": "string"
+    },
+    "duration_minutes": {
+      "type": "number",
+      "default": 60
+    },
+    "color": {
+      "type": "string"
+    },
+    "level": {
+      "type": "string",
+      "default": "B1"
+    }
+  },
+  "required": [
+    "title",
+    "day_of_week",
+    "time"
+  ]
+}

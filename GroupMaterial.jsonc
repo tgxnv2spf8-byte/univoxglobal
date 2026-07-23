@@ -1,0 +1,46 @@
+{
+  "name": "GroupMaterial",
+  "type": "object",
+  "properties": {
+    "group_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "file_url": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "default": "File"
+    }
+  },
+  "required": [
+    "group_id",
+    "title",
+    "file_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

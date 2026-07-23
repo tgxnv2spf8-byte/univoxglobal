@@ -1,0 +1,111 @@
+{
+  "name": "Program",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "language",
+        "science",
+        "research"
+      ],
+      "default": "language"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "flag_emoji": {
+      "type": "string"
+    },
+    "accent_color": {
+      "type": "string"
+    },
+    "teacher_id": {
+      "type": "string"
+    },
+    "teacher_name": {
+      "type": "string"
+    },
+    "is_free": {
+      "type": "boolean",
+      "default": true
+    },
+    "price": {
+      "type": "number",
+      "default": 0
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "free_trial": {
+      "type": "boolean",
+      "default": false
+    },
+    "trial_days": {
+      "type": "number",
+      "default": 0
+    },
+    "stripe_product_id": {
+      "type": "string"
+    },
+    "stripe_price_id": {
+      "type": "string"
+    },
+    "subscription_type": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "yearly",
+        "one_time"
+      ],
+      "default": "monthly"
+    },
+    "research_hero_image": {
+      "type": "string"
+    },
+    "research_benefits": {
+      "type": "string"
+    },
+    "research_requirements": {
+      "type": "string"
+    },
+    "research_timeline": {
+      "type": "string"
+    },
+    "research_mentors": {
+      "type": "string"
+    },
+    "research_outcomes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "description"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

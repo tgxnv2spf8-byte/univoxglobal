@@ -1,0 +1,108 @@
+{
+  "name": "Group",
+  "type": "object",
+  "properties": {
+    "program_title": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "teacher": {
+      "type": "string"
+    },
+    "day_of_week": {
+      "type": "string"
+    },
+    "time": {
+      "type": "string"
+    },
+    "level": {
+      "type": "string",
+      "default": "B1"
+    },
+    "member_count": {
+      "type": "number",
+      "default": 0
+    },
+    "capacity": {
+      "type": "number",
+      "default": 20
+    },
+    "meet_link": {
+      "type": "string"
+    },
+    "assigned_teacher_id": {
+      "type": "string"
+    },
+    "assigned_teacher_email": {
+      "type": "string"
+    },
+    "flag_emoji": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "is_archived": {
+      "type": "boolean",
+      "default": false
+    },
+    "research_opportunities": {
+      "type": "string"
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    }
+  },
+  "required": [
+    "name",
+    "teacher"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.is_archived": false
+        },
+        {
+          "data.member_ids": "{{user.id}}"
+        },
+        {
+          "data.assigned_teacher_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.assigned_teacher_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
